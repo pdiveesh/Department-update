@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import MyForm from './Form';
+import AddDepartment from './AddDepartment';
 
 function App() {
   const [selectedButton, setSelectedButton] = useState(null);
@@ -20,7 +21,7 @@ function App() {
       case 'Call back Requests':
         return <div>Call back Requests content</div>;
       case 'Add Departments':
-        return <div>Add Departments content</div>;
+        return <AddDepartment/>;
       case 'Add Schemes/Data':
         return <div>Add Schemes/Data content</div>;
       case 'Provide User Access':
