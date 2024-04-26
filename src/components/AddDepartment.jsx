@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './DepartmentDropdown.css'; 
-
+import axios  from 'axios';
 const DepartmentDropdown = ({ onSelect }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [newDepartmentName, setNewDepartmentName] = useState('');
@@ -12,8 +12,8 @@ const DepartmentDropdown = ({ onSelect }) => {
   ];
 
   const handleOptionSelect = (option) => {
-    setSelectedOption(option);
-    onSelect(option);
+    setSelectedOption(option); console.log(selectedOption);
+   
   };
 
   const handleInputChange = (e) => {
@@ -22,17 +22,20 @@ const DepartmentDropdown = ({ onSelect }) => {
 
   const handleAddDepartment = () => {
     if (newDepartmentName.trim() !== '') {
-      onSelect(newDepartmentName);
+      const result = axios.post("localhost:8080/add_department",{option: selectedOption,Department: newDepartmentName});
+    console.log(result);
+
       setSelectedOption(null); 
       setNewDepartmentName(''); 
     }
+
   };
 
   return (
     <div className="dropdown-container">
-      <label className="dropdown-label" htmlFor="department">Select Department:</label>
+      <label className="dropdown-label" htmlFor="department">Select Paper:</label>
       <select 
-        id="department" 
+        id="Paper" 
         className="dropdown"
         value={selectedOption || ''}
         onChange={(e) => handleOptionSelect(e.target.value)}
@@ -54,7 +57,7 @@ const DepartmentDropdown = ({ onSelect }) => {
         />
         <button 
           onClick={handleAddDepartment} 
-          disabled={!selectedOption || !newDepartmentName.trim()}
+          disabled={!selectedOption }
         >
           Add Department
         </button>
