@@ -22,11 +22,15 @@ const DepartmentDropdown = ({ onSelect }) => {
 
   const handleAddDepartment = () => {
     if (newDepartmentName.trim() !== '') {
-      const result = axios.post("localhost:8080/add_department",{option: selectedOption,Department: newDepartmentName});
+      const result = axios.post("http://localhost:8080/add_department", { paper: selectedOption, departmentName: newDepartmentName });
+
     console.log(result);
 
       setSelectedOption(null); 
       setNewDepartmentName(''); 
+    }
+    else{
+      console.log("department name cant be empty")
     }
 
   };
