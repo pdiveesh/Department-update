@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './NotificationContent.css'; // Import the CSS file
 
 function NotificationContent() {
@@ -14,7 +15,7 @@ function NotificationContent() {
             return;
         }
         // Handle form submission here
-        const result = axios.post("http://localhost:8080/api/notifications", { notificationTitle: title, notificationContent: content });
+        const result = axios.post("http://localhost:8080/api/notifications/send", { notificationTitle: title, notificationContent: content });
 
     console.log(result);
         setTitle(''); // Clear the title field
