@@ -16,8 +16,8 @@ function NotificationContent() {
         }
         try {
             const response = await axios.post("http://localhost:8080/api/notifications/send", {
-                notificationTitle: title,
-                notificationContent: content
+                title: title,
+                content: content
             });
             console.log(response.data); // Assuming the response contains success message
             setSuccessMessage('Notification sent successfully');
