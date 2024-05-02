@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import MyForm from './Form';
 import AddDepartment from './AddDepartment';
+import SendNotification from './SendNotification';
 
 function App() {
   const [selectedButton, setSelectedButton] = useState(null);
@@ -15,7 +16,7 @@ function App() {
       case 'Add/View a user':
         return <MyForm></MyForm>;
       case 'Send a Notification':
-        return <div>Send a Notification content</div>;
+        return <SendNotification></SendNotification>;
       case 'User Payment section':
         return <div>User Payment section content</div>;
       case 'Call back Requests':
